@@ -2,14 +2,23 @@
 
 ## Student attendance tracker
 
+echo " 
+------ Student attendance tracker -----	
+|	  				|
+|					|
+|					|
+--------- Welcome ! --------------------"
 
 health_check() {
 echo "Checking if python is installed-- "
 
 if python3 --version; then
-        echo "Python is installed --" 
+        echo "
+	===== Python is installed ==" 
 else
-        echo "Warning: Python is not installed! Please install before you continue"
+        echo "Warning: Python is not installed! Please install before you continu
+	
+	"
         exit 1
 fi
 }
@@ -29,9 +38,7 @@ archiving() {
 
 create_dir() {
 
-echo "Creating parent directory =====
 
-" 
 read -p "How do we call your directory: " input
 
 if [ -d "attendance_tracker_$input" ]; then
@@ -39,7 +46,9 @@ if [ -d "attendance_tracker_$input" ]; then
         exit 1
 fi 
 
-echo "Creating attendance_tracker_$input and related files =======" 
+echo "Creating attendance_tracker_$input and related files =======
+
+" 
 
 mkdir attendance_tracker_$input
 
@@ -129,24 +138,43 @@ cat << 'EOF' > ./reports/reports.log
 [2026-02-06 18:10:01.469424] ALERT SENT TO charlie@example.com: URGENT: Charlie Davis, your attendance is 26.7%. You will fail this class.
 EOF
 
+echo " Your attendance_tracker_$input has been created!
+
+attendance_tracker_$input"
+tree 
+
 }
 
-            #Creating the sed manipulation
+            # Creating the sed manipulation
 
 configure() {
+
+echo "Do you want to update the attendance thresholds: "	
 
 select threshold in YES NO
 do
         case "$threshold" in
                 "YES")
-                        echo "You're going to be typing the new values--"
-                        read -p "Write the New values for Warning" warning
-                        read -p "Write the New values for Failure" failure
+                        read -p "Write the New values for Warning:" warning
+                        read -p "Write the New values for Failure:" failure
+			
+			if ! [[ "$warning" =~ ^[0-9]+$ ]]; then
+   			echo "Error: Warning must be a number"
+			echo "Select 1 to try again"
+    			continue
+
+			elif ! [[ "$failure" =~ ^[0-9]+$ ]]; then
+    			echo "Error: Failure must be a number"
+			echo "Select 1 to try again"
+   			continue
+
+			fi
+
 
                         sed -i "s/75/$warning/" ./Helpers/config.json
                         sed -i "s/50/$failure/" ./Helpers/config.json
                         #new thresholds
-                        echo "Your new thresolds are:====
+                        echo "Your new thresholds are :
                         Warning: $warning
                         Failure: $failure" 
                         break
@@ -164,7 +192,6 @@ done
 health_check
 create_dir
 configure
-archiving
 
 
 
