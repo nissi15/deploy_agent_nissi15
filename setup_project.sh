@@ -15,7 +15,6 @@ fi
 }
 
 
-
             #Creating the trap that acrchives
 
 archiving() {
@@ -163,9 +162,10 @@ done
 
 
 health_check
-archiving
 create_dir
 configure
+archiving
+
 
 
 
