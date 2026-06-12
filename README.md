@@ -1,23 +1,35 @@
 # Student Attendance Tracker — Project Factory
 
-Bash script that sets up a Student Attendance Tracker workspace from scratch.
+This script sets up a Student Attendance Tracker workspace from scratch.
 
-## Start here
+---
 
-1. Clone the repository
+## Quick Start
+
+```bash
 git clone https://github.com/nissi15/deploy_agent_nissi15.git
 cd deploy_agent_nissi15
-
-2. Run the script:
+```
+## Run the script
+```
 ./setup_project.sh
+```
 
-3. Summary of the Project
-The script checks if Python3 is installed
+## What the Script Does
+
+The script checks if Python3 is installed.
+
 It asks for a directory name
+
 Then creates all project files 
-lets you update attendance thresholds.
-Archives when the user trys to exit(CTRL+C)
 
-## How to trigger the archive
+lets you update attendance thresholds
 
-Press `Ctrl+C` at any point during setup. The script catches the interrupt, puts the current state into a `.tar` archive file then deletes the incomplete directory and exits.
+Archives when the file is interrupted
+
+
+## Triggering the Archive (Signal Trap)
+
+Press **Ctrl+C** at any point during setup.
+
+The script catches `SIGINT`, archives whatever has been built so far into `attendance_tracker_{name}_archive.tar`, removes the incomplete directory, and exits. The workspace stays clean.
