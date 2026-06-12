@@ -164,7 +164,7 @@ do
     			continue
 
 			elif ! [[ "$failure" =~ ^[0-9]+$ ]]; then
-    			echo "Error: Failure must be a number"
+    		echo "Error: Failure must be a number"
 			echo "Select 1 to try again"
    			continue
 
