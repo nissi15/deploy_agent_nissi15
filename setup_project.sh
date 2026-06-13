@@ -16,11 +16,13 @@ if python3 --version; then
         echo "
 	===== Python is installed ==" 
 else
-        echo "Warning: Python is not installed! Please install before you continu
+        echo "Warning: Python is not installed! Please install before you continue
 	
 	"
         exit 1
 fi
+
+sleep 2
 }
 
 
@@ -42,7 +44,7 @@ create_dir() {
 read -p "How do we call your directory: " input
 
 if [ -d "attendance_tracker_$input" ]; then
-        echo "attendance_tracker_$input already exists ----"
+       echo "attendance_tracker_$input already exists ----"
         exit 1
 fi 
 
