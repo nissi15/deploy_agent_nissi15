@@ -5,9 +5,8 @@ This script sets up a Student Attendance Tracker workspace from scratch.
 ---
 
 ## Video explanation
-```
+
 https://www.youtube.com/watch?v=XrN9DiSehd0
-```
 
 
 ## Quick Start
